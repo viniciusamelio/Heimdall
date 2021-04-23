@@ -1,8 +1,9 @@
 import { PrismaClient } from ".prisma/client";
 import { Request } from "express";
 import BCryptService from "../../services/hashService";
+import JWTService from "../../services/jwtService";
 
-const login = async(request:Request, prisma:PrismaClient, hashService: BCryptService)=>{
+const login = async(request:Request, prisma:PrismaClient, hashService: BCryptService, jwtService: JWTService)=>{
     try {
         const data = request.body;
         const user = await prisma.users.findFirst({
@@ -18,6 +19,8 @@ const login = async(request:Request, prisma:PrismaClient, hashService: BCryptSer
         const authenticatedUser = await hashService.compare(data.password,user.password);
 
         if(!authenticatedUser)  return false;
+        user.password = "";
+        user.token = jwtService.sign(user);
         return user;
     } catch (error) {
         throw error;

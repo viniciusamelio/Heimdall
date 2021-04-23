@@ -15,4 +15,13 @@ router.post('/login',async(request,response)=>{
     }
 });
 
+router.get('/jwt',async(request,response)=>{
+    try {
+        const foundUser = await authController.checkToken(request);
+        return response.json(foundUser);
+    } catch (error) {
+        return response.status(403).json(error);
+    }
+});
+
 export default router;
