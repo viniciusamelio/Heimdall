@@ -6,8 +6,7 @@ perdendo tempo com toda a criação desse recurso em novos projetos de back-end.
 ## Tecnologia
 Alguns conceitos utilizados na criação do Heimdall foram:
 - Alguns princípios SOLID como o SRP;
-- Estrutura modular;
-- Injeção de dependências.
+- Estrutura modular.
 
 ## Nomenclatura
 O nome "Heimdall" faz refêrencia ao deus nórdico responsável pela ponte arco-íris Bifrost, essa que segundo a lenda, ligava a terra dos deuses (Asgard)
